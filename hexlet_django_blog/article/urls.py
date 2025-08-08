@@ -1,6 +1,9 @@
+# hexlet_django_blog/article/urls.py
 from django.urls import path
-from hexlet_django_blog.article import views
+from . import views
+
+app_name = "article"
 
 urlpatterns = [
-    path("", views.index),
+    path("", views.IndexView.as_view(), name="index"),
 ]
