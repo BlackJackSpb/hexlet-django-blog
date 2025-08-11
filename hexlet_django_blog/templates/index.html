@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Hello, {{ who }}!</h1>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Эксперименты с Django на Хекслете{% endblock %}
+
+{% block content %}
+    <h1>Hello, {{ who }}!</h1>
+{% endblock %}
+

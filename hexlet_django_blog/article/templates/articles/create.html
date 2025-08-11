@@ -1,0 +1,32 @@
+<!-- templates/articles/create.html -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Создать статью</h1>
+
+
+    <!-- Ошибки формы -->
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            <p><strong>Пожалуйста, исправьте ошибки ниже:</strong></p>
+            <ul>
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <li>{{ field|capfirst }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <!-- Форма -->
+    <form method="post">
+        {% csrf_token %}
+        <table border="1">
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Создать" class="btn btn-primary">
+    </form>
+
+    <p><a href="{% url 'article:index' %}" class="btn btn-secondary mt-3">← Назад к списку</a></p>
+{% endblock %}
