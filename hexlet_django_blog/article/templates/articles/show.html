@@ -9,6 +9,12 @@
     <a href="{% url 'article:update' id=article.id %}" class="btn btn-sm btn-outline-primary">
                 Редактировать
             </a>
+    <form method="post" action="{% url 'article:delete' article.id %}" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Вы уверены, что хотите удалить статью?')">
+            Удалить
+        </button>
+    </form>
     <h1>{{ article.name }}</h1>
     <p class="text-muted">Опубликовано: {{ article.created_at|date:"d.m.Y" }}</p>
     <div class="article-body">
