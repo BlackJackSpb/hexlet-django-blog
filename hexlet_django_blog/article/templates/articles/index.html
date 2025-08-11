@@ -2,6 +2,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Список статей</h1>
         <a href="{% url 'article:create' %}" class="btn btn-success">Создать статью</a>

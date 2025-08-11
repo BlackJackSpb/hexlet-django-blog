@@ -1,0 +1,27 @@
+<!-- templates/articles/update.html -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Редактировать статью</h1>
+
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            <p><strong>Исправьте ошибки:</strong></p>
+            <ul>
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <li>{{ field|capfirst }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <form method="post" action="{% url 'article:update' id=article_id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+
+    <p><a href="{% url 'article:index' %}" class="btn btn-secondary mt-3">← Назад к списку</a></p>
+{% endblock %}
